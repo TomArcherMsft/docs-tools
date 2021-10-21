@@ -5,8 +5,7 @@ from pprint import pprint
 import re
 import os
 
-githubToken = os.getenv('GITHUB_TOKEN', 'a5b952efd643243afbda62070fd0ee9b884f29fd')
-
+githubToken = os.getenv('GITHUB_TOKEN')
 params = { "state": "open"}
 headers = {'Authorization': f'token {githubToken}'}
 
