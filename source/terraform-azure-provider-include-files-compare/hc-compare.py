@@ -5,6 +5,9 @@ from pprint import pprint
 import re
 import os
 
+# Clear the screen (works on Windows and Linux/macOS)
+os.system('cls' if os.name == 'nt' else 'clear')
+
 githubToken = os.getenv('GITHUB_TOKEN')
 params = { "state": "open"}
 headers = {'Authorization': f'token {githubToken}'}
@@ -19,9 +22,6 @@ urls =  [
             ["https://api.github.com/repos/MicrosoftDocs/azure-dev-docs-pr/contents/articles/terraform/includes/hashicorp-provider-versions-arm-2-0-0-to-2-69-0.md", 
              "https://api.github.com/repos/hashicorp/terraform-provider-azurerm/commits?path=CHANGELOG-v2.md&sha=main"]
         ]
-
-# Clear the screen (works on Windows and Linux/macOS)
-os.system('cls' if os.name == 'nt' else 'clear')
 
 # For each docs/HashiCorp article(file) pair...
 for urlPair in urls:

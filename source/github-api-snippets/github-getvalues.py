@@ -2,24 +2,22 @@ import requests
 import os
 from pprint import pprint
 
+# Clear the screen (works on Windows and Linux/macOS)
+os.system('cls' if os.name == 'nt' else 'clear')
+
 githubToken = os.getenv('GITHUB_TOKEN')
 params = { "state": "open"}
 headers = {'Authorization': f'token {githubToken}'}
-
-os.system('cls' if os.name == 'nt' else 'clear')
 
 owner = input('What is the org name (owner) of the repo? ')
 repo = input('What is the repo? ')
 branch = input('What is the branch? ')
 filename = input('What is the file name? ')
-
-query_url = f"https://api.github.com/repos/{owner}/{repo}/{branch}/main"
-commitSha = {}
+query_url = f"https://api.github.com/repos/{owner}/{repo}/branches/{branch}"
 
 r = requests.get(query_url, headers=headers, params=params)
 
 branchinfo = r.json()
-
 t = requests.get(branchinfo['commit']['commit']['tree']['url'], headers=headers, params=params)
 treeinfo = t.json()
 
