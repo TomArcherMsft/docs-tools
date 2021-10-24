@@ -7,7 +7,6 @@ from pprint import pprint
 os.system('cls' if os.name == 'nt' else 'clear')
 
 githubToken = os.getenv('GITHUB_TOKEN')
-print(githubToken)
 
 params = { "state": "open"}
 headers = {'Authorization': f'token {githubToken}'}
